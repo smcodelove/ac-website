@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* ── Design System Tokens ─────────────────────────────────────────────────── */
+@theme inline {
+  /* Brand Colors */
+  --color-navy:        #0A1F44;
+  --color-navy-light:  #132d61;
+  --color-navy-dark:   #060f22;
+  --color-saffron:     #FF8C00;
+  --color-saffron-light: #ffaa3d;
+  --color-saffron-dark:  #cc7000;
+  --color-gold:        #C9A961;
+  --color-gold-light:  #dfc07e;
+  --color-cream:       #FAF7F2;
+  --color-cream-dark:  #f0ebe2;
+
+  /* Typography */
+  --font-heading: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-body:    var(--font-inter), Inter, system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px rgba(10,31,68,0.08);
+  --shadow-card-hover: 0 8px 40px rgba(10,31,68,0.16);
+  --shadow-glow: 0 0 32px rgba(255,140,0,0.18);
+}
+
+/* ── Base Styles ─────────────────────────────────────────────────────────── */
+:root {
+  --background: #FAF7F2;
+  --foreground: #1A1A1A;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Typography Utilities ────────────────────────────────────────────────── */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* ── Section Styles ──────────────────────────────────────────────────────── */
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #0A1F44;
+  line-height: 1.2;
+}
+
+.section-subheading {
+  font-size: 1.1rem;
+  color: #6B7280;
+  margin-top: 0.5rem;
+}
+
+/* ── Saffron Underline Accent ────────────────────────────────────────────── */
+.saffron-underline {
+  position: relative;
+  display: inline-block;
+}
+.saffron-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #FF8C00, #C9A961);
+  border-radius: 2px;
+}
+.saffron-underline-center::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Button Styles ───────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #FF8C00, #cc7000);
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(255,140,0,0.35);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: #0A1F44;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  border: 2px solid #0A1F44;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  background: #0A1F44;
+  color: white;
+  transform: scale(1.03);
+}
+
+.btn-outline-white {
+  color: white;
+  border-color: white;
+}
+.btn-outline-white:hover {
+  background: white;
+  color: #0A1F44;
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+/* ── Gradient Backgrounds ────────────────────────────────────────────────── */
+.bg-hero {
+  background: linear-gradient(135deg, #FAF7F2 0%, #f0ebe2 60%, #FAF7F2 100%);
+}
+
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #0A1F44 0%, #132d61 100%);
+}
+
+/* ── Scrollbar (Subtle) ──────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A961;
+  border-radius: 3px;
+}
+
+/* ── Selection Highlight ─────────────────────────────────────────────────── */
+::selection {
+  background: #FF8C00;
+  color: white;
+}
