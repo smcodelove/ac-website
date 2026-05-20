@@ -1,25 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { ArrowDown, Users, Building2, Award } from "lucide-react";
 
 // Animation variants
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (delay = 0) => ({
+  visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut", delay },
+    transition: { duration: 0.7, ease: "easeOut" as const, delay },
   }),
 };
 
-const slideRight = {
+const slideRight: Variants = {
   hidden: { opacity: 0, x: 60 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut", delay: 0.3 },
+    transition: { duration: 0.8, ease: "easeOut" as const, delay: 0.3 },
   },
 };
 
