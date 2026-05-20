@@ -4,24 +4,18 @@ import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { ArrowDown, Users, Building2, Award } from "lucide-react";
 
-// Animation variants
+// Animation variants — plain objects (no functions) to satisfy Framer Motion Variants type
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: (delay: number = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" as const, delay },
-  }),
+  visible: { opacity: 1, y: 0 },
 };
 
 const slideRight: Variants = {
   hidden: { opacity: 0, x: 60 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" as const, delay: 0.3 },
-  },
+  visible: { opacity: 1, x: 0 },
 };
+
+const easeOut = "easeOut" as const;
 
 // Quick stats displayed below the CTAs
 const stats = [
@@ -70,10 +64,10 @@ export default function Hero() {
           <div className="flex flex-col gap-6 order-2 lg:order-1">
             {/* Tag */}
             <motion.div
-              custom={0}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
+              transition={{ duration: 0.7, ease: easeOut, delay: 0 }}
             >
               <span
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase"
@@ -90,10 +84,10 @@ export default function Hero() {
 
             {/* Heading */}
             <motion.h1
-              custom={0.15}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
+              transition={{ duration: 0.7, ease: easeOut, delay: 0.15 }}
               className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] text-[#0A1F44]"
             >
               Arjun
@@ -112,10 +106,10 @@ export default function Hero() {
 
             {/* Subheading */}
             <motion.p
-              custom={0.3}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
+              transition={{ duration: 0.7, ease: easeOut, delay: 0.3 }}
               className="text-lg md:text-xl text-[#6B7280] max-w-xl leading-relaxed"
             >
               Building Bharat&apos;s Future Through{" "}
@@ -126,10 +120,10 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              custom={0.45}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
+              transition={{ duration: 0.7, ease: easeOut, delay: 0.45 }}
               className="flex flex-wrap gap-4"
             >
               <button
@@ -151,10 +145,10 @@ export default function Hero() {
 
             {/* Stats Row */}
             <motion.div
-              custom={0.6}
               initial="hidden"
               animate="visible"
               variants={fadeUp}
+              transition={{ duration: 0.7, ease: easeOut, delay: 0.6 }}
               className="flex flex-wrap gap-6 pt-4 border-t border-[#0A1F44]/10"
             >
               {stats.map(({ icon: Icon, label, value }) => (
